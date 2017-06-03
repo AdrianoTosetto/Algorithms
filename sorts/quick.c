@@ -20,10 +20,11 @@ void quicksort(int seq[], uint32_t begin, uint32_t end) {
 		if(seq[begin] > seq[end]) SWAP(begin, end);
 	}
 
-	middle = ((uint32_t) begin + (uint32_t) end) >> 1;
+	middle = ((u32) begin + (u32) end) >> 1;
 
 
-	#define comparePosition(A, B) if(seq[A] > seq[B]) swap(&seq[A], &seq[B])
+	#define comparePosition(A, B) \
+						if(seq[A] > seq[B]) swap(&seq[A], &seq[B])
 
 	comparePosition(begin, middle);
 	comparePosition(begin, end);
@@ -31,7 +32,6 @@ void quicksort(int seq[], uint32_t begin, uint32_t end) {
 	if(nElem == 3) return;
 	
 	swap(&seq[middle], &seq[end - 1]);
-
 	i = begin; middle = j = end - 1;
 	
 	for(;;) {
@@ -49,11 +49,11 @@ void quicksort(int seq[], uint32_t begin, uint32_t end) {
 
 int main(int argc, char const *argv[])
 {
-	int unordered[] = {1, 5, 2, 8, 7};
-	quicksort(unordered, 0, 4);
+	int unordered[] = {1, 5, 2, 8, 32, 5};
+	quicksort(unordered, 0, 5);
 	
 	u32 i;
-	for(i = 0; i < 5; i++)
+	for(i = 0; i < 6; i++)
 		printf("%d\n", unordered[i]);
 	return 0;
 }
